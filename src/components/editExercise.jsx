@@ -1,23 +1,31 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-function getUsers(currUser)
-{
-    return (
-        <option key={currUser} value={currUser}>
-            {currUser}
-        </option>
-    );
-}
+// let currExercise = {
+//     currUser :  '',
+//     currDesc : '',
+//     currDur : '',
+//     currDate : ''
+// }
 
-let users = [];
+// axios.get("http://localhost:5000/exercises/"+exerciseID)
+//         .then( (res) => {
+//             console.log(res.data);
+//             currExercise.currUser = res.data.username;
+//             currExercise.currDesc = res.data.description;
+//             currExercise.currDur = res.data.duration;
+//             currExercise.currDate = Date.parse(res.data.date);
+// });
 
 function EditExercise(props)
 {
-const [uname, setUserName] = useState('');
-const [desc, setDesc] = useState('');
-const [timeDuration, setDuration] = useState('');
-const [dateOfExercise, setDate] = useState('');
+    var [uname, setUserName] = useState('');
+    var [desc, setDesc] = useState('');
+    var [timeDuration, setDuration] = useState('');
+    var [dateOfExercise, setDate] = useState('');
+
+    let exerciseID = props.match.params.id;
+    // console.log(exerciseID); 
 
 function onSubmission(e)
 {
@@ -30,7 +38,7 @@ function onSubmission(e)
         date : dateOfExercise
     }
 
-    axios.post('http://localhost:5000/exercises/update'+props.match.params.id, exercise)
+    axios.patch("http://localhost:5000/exercises/update/"+exerciseID, exercise)
     .then((res) => console.log(res));
 }
 
@@ -41,14 +49,12 @@ function onSubmission(e)
 
                 <div className="form-group">
                     <label htmlFor="user-select">Username</label>
-                    <select 
+                    <input 
                     name="user-select" 
                     onChange={(e) => setUserName(e.target.value)} required 
                     className="form-control"
                     value={uname}
-                    >   
-                        {users.map((user) => getUsers(user))}
-                    </select>
+                    />   
                 </div>
 
                 <div className="form-group">
@@ -93,10 +99,5 @@ function onSubmission(e)
         </div>
     );
 }
-
-// axios.get('http://localhost:5000/users/')
-// .then((res) => {
-//     users = res.data.map((user) => user.username);
-// });
 
 export default EditExercise;
