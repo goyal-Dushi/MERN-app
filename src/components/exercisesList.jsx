@@ -11,13 +11,14 @@ function deleteExercise(id){
     });
 }
 
-axios.get('http://localhost:5000/exercises/')
-    .then((res) => {
-    exercises = res.data; 
-});
-
 function ExerciseList()
 {
+
+    axios.get('http://localhost:5000/exercises/')
+        .then((res) => {
+        exercises = res.data; 
+    });
+
     return (
         <div>
             <h3>Logged Exercises</h3>

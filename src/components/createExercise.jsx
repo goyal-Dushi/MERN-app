@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useHistory } from 'react-router';
 
 function getUsers(currUser)
 {
@@ -14,6 +15,7 @@ let users = [];
 
 function CreateExercise()
 {
+const history = useHistory();
 const [uname, setUserName] = useState(users[0]);
 const [desc, setDesc] = useState('');
 const [timeDuration, setDuration] = useState('');
@@ -30,9 +32,11 @@ function onSubmission(e)
         date : dateOfExercise
     }
 
-    console.log(exercise);
     axios.post('http://localhost:5000/exercises/add', exercise)
-    .then((res) => console.log(res));
+    .then((res) => {
+        console.log(res);
+    });
+    history.push('/');
 }
 
     return (

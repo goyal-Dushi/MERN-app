@@ -1,31 +1,23 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-
-// let currExercise = {
-//     currUser :  '',
-//     currDesc : '',
-//     currDur : '',
-//     currDate : ''
-// }
-
-// axios.get("http://localhost:5000/exercises/"+exerciseID)
-//         .then( (res) => {
-//             console.log(res.data);
-//             currExercise.currUser = res.data.username;
-//             currExercise.currDesc = res.data.description;
-//             currExercise.currDur = res.data.duration;
-//             currExercise.currDate = Date.parse(res.data.date);
-// });
+import {useHistory} from 'react-router';
 
 function EditExercise(props)
 {
-    var [uname, setUserName] = useState('');
-    var [desc, setDesc] = useState('');
-    var [timeDuration, setDuration] = useState('');
-    var [dateOfExercise, setDate] = useState('');
+    const [uname, setUserName] = useState('');
+    const [desc, setDesc] = useState('');
+    const [timeDuration, setDuration] = useState('');
+    const [dateOfExercise, setDate] = useState('');
+    const history = useHistory()
 
     let exerciseID = props.match.params.id;
-    // console.log(exerciseID); 
+    axios.get("http://localhost:5000/"+exerciseID)
+    .then((data) => {
+        setUserName(data.username);
+        setDesc(data.description);
+        setDuration(data.duration);
+        setDate(data.date);
+    });
 
 function onSubmission(e)
 {
@@ -39,7 +31,8 @@ function onSubmission(e)
     }
 
     axios.patch("http://localhost:5000/exercises/update/"+exerciseID, exercise)
-    .then((res) => console.log(res));
+    .then((res) => {console.log(res)});
+    history.push('/');
 }
 
     return (
