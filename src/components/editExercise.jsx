@@ -50,16 +50,16 @@ function EditExercise(props) {
   }
 
   return (
-    <div>
-      <h3>Edit Exercise</h3>
-      <form className='container sm' onSubmit={(e) => onSubmission(e)}>
+    <div className='container sm'>
+      <h3 className={"display-4"}>Edit Exercise</h3>
+      <form onSubmit={(e) => onSubmission(e)}>
         <div className='form-group mt-3'>
           <label htmlFor='user-select'>Username</label>
           <input
             name='user-select'
             required
             disabled
-            className='form-control'
+            className='form-control form-control-lg'
             value={userExercise?.username}
           />
         </div>
@@ -71,7 +71,7 @@ function EditExercise(props) {
             name='user-desc'
             required
             value={userExercise?.description}
-            className='form-control'
+            className='form-control form-control-lg'
             onChange={(e) =>
               setUserExercise({ ...userExercise, description: e.target.value })
             }
@@ -85,7 +85,7 @@ function EditExercise(props) {
             required
             name='user-dur'
             value={userExercise?.duration}
-            className='form-control'
+            className='form-control form-control-lg'
             onChange={(e) =>
               setUserExercise({ ...userExercise, duration: e.target.value })
             }
@@ -98,7 +98,7 @@ function EditExercise(props) {
             type='date'
             name='user-date'
             required
-            className='form-control'
+            className='form-control form-control-lg'
             value={userExercise?.date.slice(0, 10)}
             onChange={(e) =>
               setUserExercise({ ...userExercise, date: e.target.value })

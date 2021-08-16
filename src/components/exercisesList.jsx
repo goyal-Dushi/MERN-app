@@ -23,17 +23,27 @@ function ExerciseList() {
   }
 
   return (
-    <div style={{ textAlign: "center" }} className={"mt-5"}>
-      <div className={"display-4 mt-3 mb-2"}>Logged Exercises</div>
+    <div className={"container-md text-center"}>
+      <div className={"display-4"}>Logged Exercises</div>
       {exercises.length ? (
-        <table className='table table-hover table-responsive-sm mt-2'>
+        <table className='table table-hover table-responsive-sm mt-4'>
           <thead className='thead-light'>
             <tr style={{ textAlign: "center" }}>
-              <th>Username</th>
-              <th>Description</th>
-              <th>Duration</th>
-              <th>Date</th>
-              <th>Actions</th>
+              <th>
+                <h5>Username </h5>
+              </th>
+              <th>
+                <h5> Description </h5>
+              </th>
+              <th>
+                <h5> Duration </h5>
+              </th>
+              <th>
+                <h5> Date </h5>
+              </th>
+              <th>
+                <h5>Actions </h5>
+              </th>
             </tr>
           </thead>
           <tbody>
@@ -63,7 +73,7 @@ function ExerciseList() {
           </tbody>
         </table>
       ) : (
-        <h3 className={"text-muted"}> {"Nothing to show yet!"} </h3>
+        <h3 className={"text-muted mt-3"}> {"No Logged Exercises!"} </h3>
       )}
     </div>
   );

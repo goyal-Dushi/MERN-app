@@ -24,9 +24,9 @@ function CreateUser(props) {
   }
 
   return (
-    <div>
-      <h3>Create User</h3>
-      <form className={"container sm"} onSubmit={(e) => handleSubmit(e)}>
+    <div className={"container sm"} style={{ marginTop: "78px" }}>
+      <h3 className={"display-4"}>Create User</h3>
+      <form onSubmit={(e) => handleSubmit(e)}>
         <div className='form-group mt-3'>
           <label htmlFor='user-select'>Username</label>
           <input
@@ -35,13 +35,20 @@ function CreateUser(props) {
             name='user-select'
             onChange={(e) => setUsername({ username: e.target.value })}
             required
-            className='form-control'
+            className='form-control form-control-lg'
             value={user.username}
           />
         </div>
         <div className='form-group mt-3'>
           <button type='submit' className='btn btn-primary'>
             {"Create User"}
+          </button>
+          <button
+            onClick={() => history.push("/")}
+            type={"button"}
+            style={{ marginLeft: "10px" }}
+            className={"btn btn-outline-dark"}>
+            {"Go Back"}
           </button>
         </div>
       </form>
