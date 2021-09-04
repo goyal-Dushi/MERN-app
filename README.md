@@ -1,7 +1,13 @@
 # Welcome 👋
 
 ## Overview
-This is an exercise tracker which enables user to log his/her exercises on daily basis. It support use of multiple users
+This is an exercise tracker which enables user to log his/her exercises on daily basis. It support use of multiple users but no session management and user authentiacation yet. 
+
+
+
+https://user-images.githubusercontent.com/40212568/132102642-667ae556-2031-4503-8532-f55a6a83ad74.mp4
+
+
 
 ## Don't just for the repo , do leave a ⭐
 
